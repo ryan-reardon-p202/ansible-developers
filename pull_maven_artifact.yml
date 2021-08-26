@@ -1,0 +1,14 @@
+---
+- hosts: webservers
+  tasks:
+#   - name: Download Maven Artifact
+    - maven_artifact:
+        group_id: com.demo
+        artifact_id: is-it-up
+        extension: jar
+        version: 0.0.1-SNAPSHOT
+        repository_url: "http://3.19.58.4:8081/repository/isitup-snapshots"
+        username: ec2-user
+        password: Password
+        dest: /opt/isitup/
+        keep_name: yes
