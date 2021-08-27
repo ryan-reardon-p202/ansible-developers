@@ -13,3 +13,4 @@
         path: /usr/lib/jvm/jre-16/bin/java
       environment:
           JAVA_HOME: "/usr/bin/java"
+      become: yes
