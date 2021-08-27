@@ -5,6 +5,7 @@
       yum:
         name: java-latest-openjdk
         state: present
+        become: yes
         update_cache: true
     - name: Setting Java Defaults
       alternatives:
@@ -12,4 +13,4 @@
         link: /usr/bin/java
         path: /usr/lib/jvm/jre-16/bin/java
       environment:
-          JAVA_HOME: /usr/bin/java
+          JAVA_HOME: "/usr/bin/java"
