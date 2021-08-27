@@ -3,7 +3,7 @@
   tasks:
     - name: Install EPEL release for nginx
       dnf: 
-        name: "dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm"
+        name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm"
         state: present
       become: yes
     - name: Enable coderead repo
