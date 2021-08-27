@@ -5,6 +5,7 @@
       dnf: 
         name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm"
         state: present
+        disable_gpg_check: yes
       become: yes
     - name: Enable coderead repo
       shell: "dnf config-manager --set-enabled codeready-builder-for-rhel-8-rhui-rpms"
