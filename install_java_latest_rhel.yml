@@ -5,7 +5,7 @@
       dnf:
         name: java-latest-openjdk
         state: present
-        become: yes
+      :become: yes
     - name: Setting Java Defaults
       alternatives:
         name: java
