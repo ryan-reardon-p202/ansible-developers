@@ -12,3 +12,4 @@
         password: Password
         dest: /opt/isitup/
         keep_name: yes
+      become: yes
