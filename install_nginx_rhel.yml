@@ -3,8 +3,10 @@
   tasks:
     - name: Install EPEL release for nginx
       yum: name=epel-release state=present
+      become: yes
     - name: Install nginx web server
       yum: name=nginx state=installed update_cache=true
+      become: yes
       notify:
         - start nginx
     - name: Setup sites
@@ -12,6 +14,8 @@
       with_items:
         - "/etc/nginx/sites-available/"
         - "/etc/nginx/sites-enabled/"
+      become: yes
   handlers:
     - name: start nginx
       service: name=nginx enabled=yes state=started
+      become: yes
