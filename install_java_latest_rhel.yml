@@ -2,11 +2,10 @@
 - hosts: webservers
   tasks:
     - name: Install Latest Java OpenJDK
-      yum:
+      dnf:
         name: java-latest-openjdk
         state: present
         become: yes
-        update_cache: true
     - name: Setting Java Defaults
       alternatives:
         name: java
