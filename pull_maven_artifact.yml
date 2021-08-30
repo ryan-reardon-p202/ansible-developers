@@ -28,7 +28,6 @@
         src: ./templates/rhel/new_service.j2
         dest: /etc/systemd/system/isitup.service
       become: yes
-    - name: Execute new service
-      ansible.builtin.shell:
-        cmd: systemctl start isitup.service
+#     Execute new service          
+    - command: systemctl start isitup.service
       become: yes
