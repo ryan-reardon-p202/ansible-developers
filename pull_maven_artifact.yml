@@ -3,7 +3,7 @@
   tasks:
     - name: Install python-lxml
       dnf:
-        name: install python3-lxml
+        name: python3-lxml
         state: present
         disable_gpg_check: yes        
 #   - name: Download Maven Artifact
