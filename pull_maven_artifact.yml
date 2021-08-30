@@ -29,5 +29,5 @@
         dest: /etc/systemd/system/isitup.service
       become: yes
     - name: Execute new service
-        ansible.builtin.command: systemctl start isitup  
+        ansible.builtin.shell: systemctl start isitup  
       become: yes
