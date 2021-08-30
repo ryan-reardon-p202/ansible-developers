@@ -3,7 +3,7 @@
   vars: 
     service_name: isitup
     service_username: root
-    service_execution_command: "java -jar /opt/isitup/0.0.1-SNAPSHOT.jar"
+    service_execution_command: "java -jar /opt/isitup/is-it-up-0.0.1-SNAPSHOT.jar"
   tasks:
     - name: Install python-lxml
       dnf:
@@ -31,3 +31,6 @@
 #     Execute new service          
     - command: systemctl start isitup.service
       become: yes
+#     Enable new service          
+    - command: systemctl enable isitup.service
+      become: yes     
