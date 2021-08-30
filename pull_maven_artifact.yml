@@ -30,5 +30,5 @@
       become: yes
     - name: Execute new service
       ansible.builtin.shell:
-        cmd: systemctl start isitup  
+        cmd: systemctl start isitup.service
       become: yes
