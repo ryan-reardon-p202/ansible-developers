@@ -1,5 +1,9 @@
 ---
 - hosts: webservers
+  vars: 
+    service_name: isitup
+    service_username: root
+    service_execution_command: "java -jar /opt/isitup/0.0.1-SNAPSHOT.jar"
   tasks:
     - name: Install python-lxml
       dnf:
@@ -7,9 +11,9 @@
         state: present
         disable_gpg_check: yes
       become: yes
-#   - name: Download Maven Artifact
+#   Download Maven Artifact
     - maven_artifact:
-        group_id: com.demo
+        group_id: com.demoAU
         artifact_id: is-it-up
         extension: jar
         version: 0.0.1-SNAPSHOT
@@ -18,4 +22,12 @@
         password: Password
         dest: /opt/isitup/
         keep_name: yes
+      become: yes
+    - name: Create new service
+        template: 
+          src: ./templates/rhel/new_service.j2
+          dest: /etc/systemd/system/isitup.service
+      become: yes
+    - name: Execute new service
+      ansible.builtin.command: systemctl start isitup  
       become: yes
