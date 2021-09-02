@@ -13,7 +13,7 @@
       become: yes
 #   Download Maven Artifact
     - maven_artifact:
-        group_id: com.demoAU
+        group_id: com.demo
         artifact_id: is-it-up
         extension: jar
         version: 0.0.1-SNAPSHOT
