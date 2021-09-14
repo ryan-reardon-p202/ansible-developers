@@ -1,0 +1,55 @@
+---
+- hosts: {{install_servers}}
+  tasks:
+    - name: Install EPEL-Release
+      dnf: 
+        name: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm"
+        state: present
+        disable_gpg_check: yes
+      become: yes
+    - name: Install AWX Dependent packages
+      dnf:
+        name: 
+          - git 
+          - gcc 
+          - gcc-c++ 
+          - ansible 
+          - nodejs 
+          - gettext 
+          - device-mapper-persistent-data 
+          - lvm2 
+          - bzip2 
+          - python3-pip
+        state: present
+        disable_gpg_check: yes
+      become: yes
+      # shell is used instead of dnf module since config-manager is not available from the dnf module by defualt
+    - name: Setup docker repo for DNF 
+      shell: "dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo"
+      become: yes
+    - name: Install Docker
+      dnf:
+        name: docker-ce
+        state: latest
+    - name: Enable docker service
+      shell: "systemctl start docker"
+      become: yes
+    - name: Set docker service to start on reboot
+      shell: "systemctl enable docker"
+      become: yes
+    - name: Install Docker Compose
+        pip: 
+          name: docker-compose
+        #environment:
+        # HTTP_PROXY: '127.0.0.1:8080'
+        # HTTPS_PROXY: '127.0.0.1:8080'
+      become: yes
+    - name:
+      shell: "alternatives --set python /usr/bin/python3"
+    - name: Install Ansible AWX from repo
+      ansible.builtin.git:
+        repo: https://github.com/ansible/awx.git
+        dest: ~/
+    - name: Generate secret key for Ansible inventory file
+      shell: "openssl rand -base64 30"
+      register: inventory_key
