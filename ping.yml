@@ -1,6 +1,6 @@
 
 ---
-- hosts: {{ target_hosts }}
+- hosts: 159.65.39.230
   tasks:
     - name: Induce an exception to see what happens
       ansible.builtin.ping:
