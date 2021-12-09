@@ -1,6 +1,6 @@
 
 ---
-- hosts: webservers
+- hosts: {{target_hosts}}
   tasks:
     - name: Induce an exception to see what happens
       ansible.builtin.ping:
