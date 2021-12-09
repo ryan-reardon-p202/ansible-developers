@@ -2,5 +2,12 @@
 ---
 - hosts: 159.65.39.230
   tasks:
-    - name: Induce an exception to see what happens
+    - name: Test ping on the host
       ansible.builtin.ping:
+      
+    - name: just display
+      shell: uptime
+      register: hostname
+      
+    - debug:
+        var: hostname
