@@ -1,0 +1,6 @@
+---
+test:
+  hosts:
+     test01:
+        ansible_host: 167.172.229.20
+        ansible_user: root 
