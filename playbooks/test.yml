@@ -6,4 +6,4 @@
     - test
   tasks:
     - name: 'Run mytime'
-      my_time: bbusy
+      my_time:
