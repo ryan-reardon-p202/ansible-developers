@@ -1,0 +1,8 @@
+---
+- name: print the name of the user
+  shell: whoami
+  register: username
+
+- debug: var='{{ item }}'
+  with_items:
+    - username.stdout

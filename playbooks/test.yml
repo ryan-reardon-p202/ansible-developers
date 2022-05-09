@@ -1,0 +1,10 @@
+
+---
+- hosts: 159.65.39.230
+  gather_facts: false
+  roles: 
+    - test
+  tasks:
+
+  - name: 'Run mytime'
+    my_time: bbusy
