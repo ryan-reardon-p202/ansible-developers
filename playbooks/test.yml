@@ -1,6 +1,6 @@
 
 ---
-- hosts: test
+- hosts: test-server
   gather_facts: false
   roles: 
     - test
