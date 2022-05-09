@@ -1,6 +1,6 @@
 
 ---
-- hosts: 167.172.229.20
+- hosts: test
   gather_facts: false
   roles: 
     - test
