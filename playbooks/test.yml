@@ -5,6 +5,5 @@
   roles: 
     - test
   tasks:
-
-  - name: 'Run mytime'
-    my_time: bbusy
+    - name: 'Run mytime'
+      my_time: bbusy
